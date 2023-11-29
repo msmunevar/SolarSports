@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="start"
+        android:paddingHorizontal="20dp"
+        android:text="Proporcionar detalles de petición"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEnviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo"
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/editTextMes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="Mes"
+                android:inputType="text"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                android:textColor="#090000"
+                android:textColorHint="#4E4B4B"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/editTextRadiaciondia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="Radiación recibida"
+                android:inputType="text"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                android:textColor="#090000"
+                android:textColorHint="#4E4B4B"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextConsumo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="Consumo de energía"
+                android:inputType="text"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                android:textColorHint="#4E4B4B"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/ediTextAhorro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="Ahorro de energía"
+                android:inputType="text"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                android:textColorHint="#4E4B4B"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/ediTextC02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="Toneladas de C02"
+                android:inputType="text"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                android:textColorHint="#4E4B4B"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/ediTextMantenimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_border"
+                android:hint="Días restantes de mantenimiento"
+                android:inputType="text"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                android:textColorHint="#4E4B4B"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_border"
+                android:gravity="top"
+                android:hint="Descripción del panel solar"
+                android:inputType="textMultiLine"
+                android:minLines="4"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                android:textColorHint="#4E4B4B" />
+
+            <Space
+                android:hint="Descripción Detallada de la Solicitud"
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDescripcion" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:scrollbars="none"> <!-- Está oculto inicialmente -->
+    </WebView>
+
+    <Button
+        android:id="@+id/buttonEnviar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#6C6666"
+        android:enabled="false"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:text="Enviar"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ScrollView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

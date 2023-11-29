@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_token"
+    app:startDestination="@id/artificialcamera">
+
+    <fragment
+        android:id="@+id/artificialcamera"
+        android:name="com.example.solarsports.CameraFragment"
+        android:label="Reconocimiento Facial">
+        <action
+            android:id="@+id/action_artificialcamera_to_token"
+            app:destination="@id/tokencamera" />
+    </fragment>
+    <fragment
+        android:id="@+id/tokencamera"
+        android:name="com.example.solarsports.GeneradorToken"
+        android:label="Token Artificial">
+    </fragment>
+</navigation>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Estilo para el indicador inactivo -->
+    <style name="App_Custom_Indicator" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:width">0dp</item> <!-- Ancho cero para hacerlo invisible -->
+        <item name="android:height">0dp</item> <!-- Altura cero para hacerlo invisible -->
+        <item name="android:color">@android:color/transparent</item> <!-- Color transparente -->
+    </style>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_home"
+        android:title="Inicio"
+        android:icon="@drawable/ic_option1"/>
+
+    <item
+        android:id="@+id/action_profile"
+        android:title="Registros"
+        android:icon="@drawable/registros"
+        />
+
+    <item
+        android:id="@+id/action_nps"
+        android:title="Beneficios"
+        android:icon="@drawable/nps"
+        />
+
+
+</menu>
