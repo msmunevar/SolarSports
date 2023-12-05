@@ -3,9 +3,12 @@ package com.example.solarsports;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.solarsports.DB.DBconexion;
 import com.example.solarsports.DB.DBmanager;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
         DBmanager dbmanager = new DBmanager(this);
         dbmanager.open();
 
+        SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        // Guardar valor
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("globalVariable", "true");
+        editor.apply();
+        String valor = sharedPreferences.getString("globalVariable", "false");
+
         /*ContentValues values = new ContentValues();
         values.put("item_id",5);
         values.put("seccion_id",1);
@@ -69,8 +80,31 @@ public class MainActivity extends AppCompatActivity {
         dbmanager.insert("elementos",values);*/
         /*dbmanager.deleteAllDataFromTable("item_seccion");*/
 
+        /*dbmanager.deleteAllDataFromTable("item_seccion");*/
 
-        /*dbmanager.insertUser("msmaR2","1234","1");*/
+
+        if(valor.equals("true")){
+
+            dbmanager.insertUser("msmaR2","1234","1");
+            ContentValues values = new ContentValues();
+            values.put("item_id",1);
+            values.put("seccion_id",1);
+            values.put("usuarioid_responsable",1);
+            values.put("usuarioid_creador",1);
+            values.put("descripcion","Ninguna");
+            values.put("sla","2");
+            dbmanager.insert("item_seccion",values);
+
+            ContentValues values2 = new ContentValues();
+            values2.put("nombre","Instalaciones Deportivas Acuáticas");
+            dbmanager.insert("secciones",values2);
+
+            ContentValues values4 = new ContentValues();
+            values4.put("nombre","Piscina olímpica");
+            dbmanager.insert("elementos",values4);
+
+            editor.putString("globalVariable", "false");
+        }
 
         Cursor cursor1 = dbmanager.getAll("formulario_registro",null);
         if (cursor1 != null && cursor1.moveToFirst()) {

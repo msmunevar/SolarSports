@@ -380,7 +380,7 @@ public class FormularioActivity extends AppCompatActivity {
                                         .addOnFailureListener(
                                                 e -> e.printStackTrace())
                                         .addOnCanceledListener(
-                                                () -> System.out.println("Fallo"));
+                                                () -> finish());
                             } else {
                                 // Modules are not present on the device...
                                 moduleInstall();

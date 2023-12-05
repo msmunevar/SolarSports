@@ -131,6 +131,13 @@
                     android:textSize="20sp"
                     app:backgroundTint="#ACDECE" />
 
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usuario: msmaR2\nContraseña: 1234" />
+
+
             </LinearLayout>
 
         </ScrollView>
