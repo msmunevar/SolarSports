@@ -1,13 +1,18 @@
 package com.example.solarsports;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -23,9 +28,8 @@ import com.example.mesaservicios.models.Elemento;
 import com.example.mesaservicios.models.Seccion;*/
 import com.example.solarsports.Adaptadores.CatalogoAdapter;
 import com.example.solarsports.DB.DBmanager;
-import com.example.solarsports.models.Catalogo;
 import com.example.solarsports.models.Elemento;
-import com.example.solarsports.models.Seccion;
+import com.example.solarsports.models.FirebaseAuthManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -38,10 +42,28 @@ public class PortafolioActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private NavController navController;
     private int tamano_secciones;
+    private MainActivity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portafolio);
+
+        // Obtener el nombre de usuario completo
+        String displayName = FirebaseAuthManager.getInstance().getFirebaseAuth().getCurrentUser().getDisplayName();
+
+        // Dividir el nombre de usuario en palabras
+        String[] words = displayName.split("\\s+");
+
+        // Obtener la primera palabra (si hay al menos una palabra)
+        String firstWord = words.length > 0 ? words[0] : "";
+
+        // Referenciar al TextView en tu layout
+        TextView textPersona = findViewById(R.id.textPersona);
+
+        // Establecer la primera palabra en el TextView
+        textPersona.setText("!Hola, "+firstWord);
+
+        Log.d("HolaaaMauth", "ID de Item de Sección: " + FirebaseAuthManager.getInstance().getFirebaseAuth().getCurrentUser().getDisplayName());
 
         int idUsuario = getIntent().getIntExtra("idUsuario", 0);
         String rol = getIntent().getStringExtra("rol");
@@ -134,6 +156,31 @@ public class PortafolioActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onBackPressed() {
+        // Crear un AlertDialog con el estilo personalizado
+        AlertDialog alertDialog = new AlertDialog.Builder(this, R.style.AlertDialogStyle)
+                .setTitle("¡Espera!")
+                .setMessage("¿Estás seguro de que quieres salir?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Si el usuario hace clic en "Sí", entonces permite que la actividad retroceda
+                        Intent intent = new Intent(PortafolioActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .show();
+
+        // Puedes ajustar el color de los botones también si lo deseas
+        Button positiveButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        Button negativeButton = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+
+        positiveButton.setTextColor(getResources().getColor(R.color.colorclaro)); // Cambia colorAccent al color que desees
+        negativeButton.setTextColor(getResources().getColor(R.color.colorclaro)); // Cambia colorAccent al color que desees
+    }
+
+
     private void loadFragment(Fragment fragment) {
         // Verificar si el fragmento ya está presente para evitar la superposición
         Fragment existingFragment = getSupportFragmentManager().findFragmentById(R.id.frame_layout);
@@ -143,4 +190,5 @@ public class PortafolioActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
 }

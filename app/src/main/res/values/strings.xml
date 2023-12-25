@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="barcode_result" translatable="false">Barcode detected.\n%1$s</string>
+    <string name="default_web_client_id" translatable="false">328734749324-n9ukmc3lrrub6bi0iavf0ta4sce4hbn2.apps.googleusercontent.com</string>
 </resources>

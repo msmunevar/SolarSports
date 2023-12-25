@@ -4,5 +4,7 @@
         <!-- Customize color of navigation drawer icon and back arrow -->
         <item name="colorControlNormal">@color/white</item>
     </style>
-
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">#0F0F0F</item> <!-- Cambia FF0000 al color que desees -->
+    </style>
 </resources>
