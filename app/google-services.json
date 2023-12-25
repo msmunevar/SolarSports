@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "328734749324",
+    "project_id": "solarsport-c7670",
+    "storage_bucket": "solarsport-c7670.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328734749324:android:d8cd635321c710351c01a9",
+        "android_client_info": {
+          "package_name": "com.example.solarsports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328734749324-gf8u8co0q91955v9521k2q3sr83ti0qg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.solarsports",
+            "certificate_hash": "7eb0ecddd60cc3d74d6a527f3cb63f4893a49046"
+          }
+        },
+        {
+          "client_id": "328734749324-n9ukmc3lrrub6bi0iavf0ta4sce4hbn2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHKgaL5WUB7D94BzIIS9E4ZbnxFFTnoyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328734749324-n9ukmc3lrrub6bi0iavf0ta4sce4hbn2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
